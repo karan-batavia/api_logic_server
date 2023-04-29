@@ -1,0 +1,1187 @@
+{
+  "privadoCoreVersion" : "Not Detected",
+  "privadoCLIVersion" : "Not Detected",
+  "privadoMainVersion" : "Not Detected",
+  "privadoLanguageEngineVersion" : "1.1.1629",
+  "createdAt" : 1682752015673,
+  "repoName" : "discover-flask",
+  "language" : "python",
+  "gitMetadata" : {
+    "branchName" : "master",
+    "commitId" : "00762e9ee9e5713cb61ca8734236d05d6e424da9",
+    "remoteUrl" : "https://github.com/realpython/discover-flask.git"
+  },
+  "localScanPath" : "/home/midas/Privado/repos/discover-flask",
+  "probableSinks" : [
+    "flask/ext/login.py",
+    "flask.py",
+    "flask/ext/bcrypt.py",
+    "flask/ext/sqlalchemy.py",
+    "sqlite3.py",
+    "wtforms/validators.py",
+    "wtforms.py",
+    "alembic.py",
+    "logging/config.py",
+    "flask/ext/migrate.py",
+    "flask/ext/script.py",
+    "coverage.py"
+  ],
+  "sources" : [
+    {
+      "sourceType" : "Data Element",
+      "id" : "Data.Sensitive.AccountData.AccountID",
+      "name" : "Account ID",
+      "category" : "Account Data",
+      "sensitivity" : "medium",
+      "isSensitive" : false,
+      "tags" : {
+        "law" : "GDPR"
+      }
+    },
+    {
+      "sourceType" : "Data Element",
+      "id" : "Data.Sensitive.PersonalIdentification.FirstName",
+      "name" : "First Name",
+      "category" : "Personal Identification",
+      "sensitivity" : "low",
+      "isSensitive" : false,
+      "tags" : {
+        "law" : "GDPR"
+      }
+    },
+    {
+      "sourceType" : "Data Element",
+      "id" : "Data.Sensitive.AccountData.AccountPassword",
+      "name" : "Account Password",
+      "category" : "Account Data",
+      "sensitivity" : "high",
+      "isSensitive" : false,
+      "tags" : {
+        "law" : "GDPR"
+      }
+    },
+    {
+      "sourceType" : "Data Element",
+      "id" : "Data.Sensitive.ContactData.EmailAddress",
+      "name" : "Email Address",
+      "category" : "Contact Data",
+      "sensitivity" : "medium",
+      "isSensitive" : false,
+      "tags" : {
+        "law" : "GDPR"
+      }
+    },
+    {
+      "sourceType" : "Data Element",
+      "id" : "Data.Sensitive.NationalIdentificationNumbers.Passport",
+      "name" : "Passport",
+      "category" : "National Identification Numbers",
+      "sensitivity" : "high",
+      "isSensitive" : false,
+      "tags" : {
+        "law" : "GDPR"
+      }
+    },
+    {
+      "sourceType" : "Data Element",
+      "id" : "Data.Sensitive.AccountData.AccountName",
+      "name" : "Account Name",
+      "category" : "Account Data",
+      "sensitivity" : "medium",
+      "isSensitive" : false,
+      "tags" : {
+        "law" : "GDPR"
+      }
+    }
+  ],
+  "collections" : [
+  ],
+  "violations" : [
+    {
+      "policyId" : "Threats.Leakage.isDataLeakingToLog",
+      "policyDetails" : {
+        "name" : "PII data is written to the log files",
+        "policyType" : "threat",
+        "description" : "Sensitive Data written to log files or file system may lead to unauthorized access or exposure to potential attack.",
+        "fix" : "It is not recommended to log Sensitive Data to log files or the file system. The data must be encrypted if it is absolutely necessary to log it.",
+        "action" : "",
+        "tags" : {
+          "CWE-359" : "https://cwe.mitre.org/data/definitions/359.html",
+          "CWE-532" : "https://cwe.mitre.org/data/definitions/532.html",
+          "MSTG-STORAGE-3" : "https://github.com/OWASP/owasp-mstg/blob/master/Document/0x05d-Testing-Data-Storage.md#Testing-Logs-for-Sensitive-Data-MSTG-STORAGE-3",
+          "MITRE" : "Sharing.Exposure"
+        }
+      },
+      "dataFlow" : [
+        {
+          "sourceId" : "Data.Sensitive.AccountData.AccountPassword",
+          "sinkId" : "Leakages.Log.Info",
+          "pathIds" : [
+            "3771-3772",
+            "3771-3772-3773-3783-3784",
+            "3906-3907-3908-3913-3914"
+          ]
+        },
+        {
+          "sourceId" : "Data.Sensitive.AccountData.AccountName",
+          "sinkId" : "Leakages.Log.Info",
+          "pathIds" : [
+            "3771-3772",
+            "3771-3772-3773-3783-3784",
+            "3906-3907-3908-3913-3914"
+          ]
+        },
+        {
+          "sourceId" : "Data.Sensitive.ContactData.EmailAddress",
+          "sinkId" : "Leakages.Log.Info",
+          "pathIds" : [
+            "3906-3907-3908-3913-3914"
+          ]
+        }
+      ],
+      "processing" : null
+    }
+  ],
+  "sinks" : [
+    {
+      "sourceType" : "Sinks",
+      "sinkType" : "storages",
+      "id" : "Storages.SQLAlchemy",
+      "name" : "SQLAlchemy",
+      "domains" : [
+        "sqlalchemy.org"
+      ],
+      "apiUrl" : [
+      ],
+      "databaseDetails" : {
+        "dbName" : "",
+        "dbVendor" : "",
+        "dbLocation" : "",
+        "dbOperation" : ""
+      }
+    },
+    {
+      "sourceType" : "Sinks",
+      "sinkType" : "storages",
+      "id" : "Storages.Android.SQLite.ReadAndWrite",
+      "name" : "SQLite",
+      "domains" : [
+        "sqlite.org"
+      ],
+      "apiUrl" : [
+      ],
+      "databaseDetails" : {
+        "dbName" : "",
+        "dbVendor" : "",
+        "dbLocation" : "",
+        "dbOperation" : ""
+      }
+    },
+    {
+      "sourceType" : "Sinks",
+      "sinkType" : "storages",
+      "id" : "Storages.Framework.SQLAlchemy.Read",
+      "name" : "SQLAlchemy(Read)",
+      "domains" : [
+        "sqlalchemy.org"
+      ],
+      "apiUrl" : [
+      ],
+      "databaseDetails" : {
+        "dbName" : "",
+        "dbVendor" : "",
+        "dbLocation" : "",
+        "dbOperation" : ""
+      }
+    },
+    {
+      "sourceType" : "Sinks",
+      "sinkType" : "storages",
+      "id" : "Storages.Framework.SQLAlchemy.Write",
+      "name" : "SQLAlchemy(Write)",
+      "domains" : [
+        "sqlalchemy.org"
+      ],
+      "apiUrl" : [
+      ],
+      "databaseDetails" : {
+        "dbName" : "",
+        "dbVendor" : "",
+        "dbLocation" : "",
+        "dbOperation" : ""
+      }
+    }
+  ],
+  "processing" : [
+    {
+      "sourceId" : "Data.Sensitive.AccountData.AccountPassword",
+      "occurrences" : [
+        {
+          "sample" : "tmp1",
+          "lineNumber" : 34,
+          "columnNumber" : 20,
+          "fileName" : "/home/midas/Privado/repos/discover-flask/project/users/views.py",
+          "excerpt" : "def login():\n    error = None\n    form = LoginForm(request.form)\n    if request.method == 'POST':\n        if form.validate_on_submit():\n            user = User.query.filter_by(name=request.form['username']).first() /* <=== project/models.py:<module>.User.__init__.<member>(query) */ \n            if user is not None and bcrypt.check_password_hash(\n                user.password, request.form['password']\n            ):\n                login_user(user)\n                flash('You were logged in. Go Crazy.')"
+        },
+        {
+          "sample" : "tmp2",
+          "lineNumber" : 37,
+          "columnNumber" : 12,
+          "fileName" : "/home/midas/Privado/repos/discover-flask/project/__init__.py",
+          "excerpt" : "login_manager.login_view = \"users.login\"\n\n\n@login_manager.user_loader\ndef load_user(user_id):\n    return User.query.filter(User.id == int(user_id)).first() /* <=== project/models.py:<module>.User.__init__.<member>(query) */ "
+        },
+        {
+          "sample" : "self.password",
+          "lineNumber" : 39,
+          "columnNumber" : 9,
+          "fileName" : "/home/midas/Privado/repos/discover-flask/project/models.py",
+          "excerpt" : "    posts = relationship(\"BlogPost\", backref=\"author\")\n\n    def __init__(self, name, email, password):\n        self.name = name\n        self.email = email\n        self.password = bcrypt.generate_password_hash(password) /* <===  */ \n\n    def is_authenticated(self):\n        return True\n\n    def is_active(self):"
+        }
+      ]
+    },
+    {
+      "sourceId" : "Data.Sensitive.AccountData.AccountName",
+      "occurrences" : [
+        {
+          "sample" : "request.form['username']",
+          "lineNumber" : 34,
+          "columnNumber" : 46,
+          "fileName" : "/home/midas/Privado/repos/discover-flask/project/users/views.py",
+          "excerpt" : "def login():\n    error = None\n    form = LoginForm(request.form)\n    if request.method == 'POST':\n        if form.validate_on_submit():\n            user = User.query.filter_by(name=request.form['username']).first() /* <===  */ \n            if user is not None and bcrypt.check_password_hash(\n                user.password, request.form['password']\n            ):\n                login_user(user)\n                flash('You were logged in. Go Crazy.')"
+        },
+        {
+          "sample" : "username",
+          "lineNumber" : 12,
+          "columnNumber" : 5,
+          "fileName" : "/home/midas/Privado/repos/discover-flask/project/users/forms.py",
+          "excerpt" : "    username = TextField('Username', validators=[DataRequired()])\n    password = PasswordField('Password', validators=[DataRequired()])\n\n\nclass RegisterForm(Form):\n    username = TextField( /* <=== wtforms.py:<module>.TextField */ \n        'username',\n        validators=[DataRequired(), Length(min=3, max=25)]\n    )\n    email = TextField(\n        'email',"
+        }
+      ]
+    },
+    {
+      "sourceId" : "Data.Sensitive.PersonalIdentification.FirstName",
+      "occurrences" : [
+        {
+          "sample" : "Specie",
+          "lineNumber" : 11,
+          "columnNumber" : 1,
+          "fileName" : "/home/midas/Privado/repos/discover-flask/db_create_users.py",
+          "excerpt" : "# insert data\ndb.session.add(User(\"michael\", \"michael@realpython.com\", \"i'll-never-tell\"))\ndb.session.add(User(\"admin\", \"ad@min.com\", \"admin\"))\ndb.session.add(User(\"mike\", \"mike@herman.com\", \"tell\"))\n\nSpecie.query.all() /* <=== project/model2.py:<module>.Specie.__init__ */ \n\nSpecie.query.add_columns()\n\n# commit the changes\ndb.session.commit()"
+        },
+        {
+          "sample" : "first_name",
+          "lineNumber" : 7,
+          "columnNumber" : 3,
+          "fileName" : "/home/midas/Privado/repos/discover-flask/project/model2.py",
+          "excerpt" : "from sqlalchemy import Column, Integer, String, Unicode, DateTime,ForeignKey, UniqueConstraint\n\n\nclass Foo(declarative_base(metadata=metadata)):\n  passport_number = Column(Integer, primary_key=True)\n  first_name = Column(String, index = True) /* <=== sqlalchemy.py:<module>.Column */ \n\n\nSpecieBase = declarative_base(metadata=metadata)\nclass Specie(SpecieBase):\n    __tablename__ = 'specie'"
+        }
+      ]
+    },
+    {
+      "sourceId" : "Data.Sensitive.ContactData.EmailAddress",
+      "occurrences" : [
+        {
+          "sample" : "tmp1",
+          "lineNumber" : 34,
+          "columnNumber" : 20,
+          "fileName" : "/home/midas/Privado/repos/discover-flask/project/users/views.py",
+          "excerpt" : "def login():\n    error = None\n    form = LoginForm(request.form)\n    if request.method == 'POST':\n        if form.validate_on_submit():\n            user = User.query.filter_by(name=request.form['username']).first() /* <=== project/models.py:<module>.User.__init__.<member>(query) */ \n            if user is not None and bcrypt.check_password_hash(\n                user.password, request.form['password']\n            ):\n                login_user(user)\n                flash('You were logged in. Go Crazy.')"
+        },
+        {
+          "sample" : "email",
+          "lineNumber" : 38,
+          "columnNumber" : 22,
+          "fileName" : "/home/midas/Privado/repos/discover-flask/project/models.py",
+          "excerpt" : "    password = db.Column(db.String)\n    posts = relationship(\"BlogPost\", backref=\"author\")\n\n    def __init__(self, name, email, password):\n        self.name = name\n        self.email = email /* <=== flask/ext/sqlalchemy.py:<module>.SQLAlchemy.Column */ \n        self.password = bcrypt.generate_password_hash(password)\n\n    def is_authenticated(self):\n        return True\n"
+        },
+        {
+          "sample" : "tmp2",
+          "lineNumber" : 37,
+          "columnNumber" : 12,
+          "fileName" : "/home/midas/Privado/repos/discover-flask/project/__init__.py",
+          "excerpt" : "login_manager.login_view = \"users.login\"\n\n\n@login_manager.user_loader\ndef load_user(user_id):\n    return User.query.filter(User.id == int(user_id)).first() /* <=== project/models.py:<module>.User.__init__.<member>(query) */ "
+        },
+        {
+          "sample" : "Email",
+          "lineNumber" : 18,
+          "columnNumber" : 37,
+          "fileName" : "/home/midas/Privado/repos/discover-flask/project/users/forms.py",
+          "excerpt" : "        'username',\n        validators=[DataRequired(), Length(min=3, max=25)]\n    )\n    email = TextField(\n        'email',\n        validators=[DataRequired(), Email(message=None), Length(min=6, max=40)] /* <=== wtforms/validators.py:<module>.Email.__init__ */ \n    )\n    password = PasswordField(\n        'password',\n        validators=[DataRequired(), Length(min=6, max=25)]\n    )"
+        }
+      ]
+    },
+    {
+      "sourceId" : "Data.Sensitive.AccountData.AccountID",
+      "occurrences" : [
+        {
+          "sample" : "user_id",
+          "lineNumber" : 37,
+          "columnNumber" : 45,
+          "fileName" : "/home/midas/Privado/repos/discover-flask/project/__init__.py",
+          "excerpt" : "login_manager.login_view = \"users.login\"\n\n\n@login_manager.user_loader\ndef load_user(user_id):\n    return User.query.filter(User.id == int(user_id)).first() /* <=== ANY */ "
+        }
+      ]
+    },
+    {
+      "sourceId" : "Data.Sensitive.NationalIdentificationNumbers.Passport",
+      "occurrences" : [
+        {
+          "sample" : "Specie",
+          "lineNumber" : 11,
+          "columnNumber" : 1,
+          "fileName" : "/home/midas/Privado/repos/discover-flask/db_create_users.py",
+          "excerpt" : "# insert data\ndb.session.add(User(\"michael\", \"michael@realpython.com\", \"i'll-never-tell\"))\ndb.session.add(User(\"admin\", \"ad@min.com\", \"admin\"))\ndb.session.add(User(\"mike\", \"mike@herman.com\", \"tell\"))\n\nSpecie.query.all() /* <=== project/model2.py:<module>.Specie.__init__ */ \n\nSpecie.query.add_columns()\n\n# commit the changes\ndb.session.commit()"
+        },
+        {
+          "sample" : "passport_number",
+          "lineNumber" : 6,
+          "columnNumber" : 3,
+          "fileName" : "/home/midas/Privado/repos/discover-flask/project/model2.py",
+          "excerpt" : "from sqlalchemy.ext.declarative import declarative_base\nfrom sqlalchemy import Column, Integer, String, Unicode, DateTime,ForeignKey, UniqueConstraint\n\n\nclass Foo(declarative_base(metadata=metadata)):\n  passport_number = Column(Integer, primary_key=True) /* <=== sqlalchemy.py:<module>.Column */ \n  first_name = Column(String, index = True)\n\n\nSpecieBase = declarative_base(metadata=metadata)\nclass Specie(SpecieBase):"
+        }
+      ]
+    }
+  ],
+  "sinkProcessing" : [
+    {
+      "sinkId" : "Storages.Framework.SQLAlchemy.Read",
+      "occurrences" : [
+        {
+          "sample" : "tmp3.all()",
+          "lineNumber" : 11,
+          "columnNumber" : 1,
+          "fileName" : "/home/midas/Privado/repos/discover-flask/db_create_users.py",
+          "excerpt" : "# insert data\ndb.session.add(User(\"michael\", \"michael@realpython.com\", \"i'll-never-tell\"))\ndb.session.add(User(\"admin\", \"ad@min.com\", \"admin\"))\ndb.session.add(User(\"mike\", \"mike@herman.com\", \"tell\"))\n\nSpecie.query.all() /* <=== project/model2.py */ \n\nSpecie.query.add_columns()\n\n# commit the changes\ndb.session.commit()"
+        }
+      ]
+    },
+    {
+      "sinkId" : "Storages.SQLAlchemy",
+      "occurrences" : [
+        {
+          "sample" : "db.Column(db.String)",
+          "lineNumber" : 33,
+          "columnNumber" : 16,
+          "fileName" : "/home/midas/Privado/repos/discover-flask/project/models.py",
+          "excerpt" : "    __tablename__ = \"users\"\n\n    id = db.Column(db.Integer, primary_key=True)\n    name = db.Column(db.String, nullable=False)\n    email = db.Column(db.String, nullable=False)\n    password = db.Column(db.String) /* <=== flask/ext/sqlalchemy.py */ \n    posts = relationship(\"BlogPost\", backref=\"author\")\n\n    def __init__(self, name, email, password):\n        self.name = name\n        self.email = email"
+        },
+        {
+          "sample" : "Column(String, index = True)",
+          "lineNumber" : 27,
+          "columnNumber" : 14,
+          "fileName" : "/home/midas/Privado/repos/discover-flask/project/model2.py",
+          "excerpt" : "  PhylumBase = declarative_base(metadata=metadata)\n  class Phylum(PhylumBase):\n      __tablename__ = 'phylum'\n      __table_args__ = (UniqueConstraint('name'), {})\n      id = Column(Integer, primary_key=True)\n      name = Column(String, index = True) /* <=== sqlalchemy.py */ \n      def __init__(self, name):\n          self.name = name\n  \n  PhylumJoinBase = declarative_base(metadata = metadata)\n  class Phylum_GBIDJoin(PhylumJoinBase):"
+        },
+        {
+          "sample" : "db.create_all()",
+          "lineNumber" : 5,
+          "columnNumber" : 1,
+          "fileName" : "/home/midas/Privado/repos/discover-flask/db_create.py",
+          "excerpt" : "from project import db\n# from models import BlogPost\n\n# create the database and the db table\ndb.create_all() /* <=== flask/ext/sqlalchemy.py */ \n\n# insert data\n# db.session.add(BlogPost(\"Good\", \"I\\'m good.\"))\n# db.session.add(BlogPost(\"Well\", \"I\\'m well.\"))\n# db.session.add(BlogPost(\"Excellent\", \"I\\'m excellent.\"))"
+        },
+        {
+          "sample" : "sa.String()",
+          "lineNumber" : 21,
+          "columnNumber" : 23,
+          "fileName" : "/home/midas/Privado/repos/discover-flask/migrations/versions/4a5b39003781_.py",
+          "excerpt" : "\ndef upgrade():\n    ### commands auto generated by Alembic - please adjust! ###\n    op.create_table('users',\n    sa.Column('id', sa.Integer(), nullable=False),\n    sa.Column('name', sa.String(), nullable=False), /* <=== sqlalchemy.py */ \n    sa.Column('email', sa.String(), nullable=False),\n    sa.Column('password', sa.String(), nullable=False),\n    sa.PrimaryKeyConstraint('id')\n    )\n    op.add_column(u'posts', sa.Column('author_id', sa.Integer(), nullable=True))"
+        },
+        {
+          "sample" : "engine.connect()",
+          "lineNumber" : 57,
+          "columnNumber" : 18,
+          "fileName" : "/home/midas/Privado/repos/discover-flask/migrations/env.py",
+          "excerpt" : "    engine = engine_from_config(\n                config.get_section(config.config_ini_section),\n                prefix='sqlalchemy.',\n                poolclass=pool.NullPool)\n\n    connection = engine.connect() /* <=== sqlalchemy.py */ \n    context.configure(\n                connection=connection,\n                target_metadata=target_metadata\n                )\n"
+        },
+        {
+          "sample" : "tmp3.commit()",
+          "lineNumber" : 66,
+          "columnNumber" : 9,
+          "fileName" : "/home/midas/Privado/repos/discover-flask/project/users/views.py",
+          "excerpt" : "            name=form.username.data,\n            email=form.email.data,\n            password=form.password.data\n        )\n        db.session.add(user)\n        db.session.commit() /* <=== flask/ext/sqlalchemy.py */ \n        login_user(user)\n        return redirect(url_for('home.home'))\n    return render_template('register.html', form=form)"
+        },
+        {
+          "sample" : "tmp3.query(BlogPost)",
+          "lineNumber" : 44,
+          "columnNumber" : 17,
+          "fileName" : "/home/midas/Privado/repos/discover-flask/project/home/views.py",
+          "excerpt" : "        db.session.add(new_message)\n        db.session.commit()\n        flash('New entry was successfully posted. Thanks.')\n        return redirect(url_for('home.home'))\n    else:\n        posts = db.session.query(BlogPost).all() /* <=== flask/ext/sqlalchemy.py */ \n        return render_template(\n            'index.html', posts=posts, form=form, error=error)\n\n\n@home_blueprint.route('/welcome')   # pragma: no cover"
+        },
+        {
+          "sample" : "sa.Column('password', sa.VARCHAR(), autoincrement = False, nullable = False)",
+          "lineNumber" : 25,
+          "columnNumber" : 28,
+          "fileName" : "/home/midas/Privado/repos/discover-flask/migrations/versions/3e0014fa59ca_.py",
+          "excerpt" : "    ### end Alembic commands ###\n\n\ndef downgrade():\n    ### commands auto generated by Alembic - please adjust! ###\n    op.add_column('users', sa.Column('password', sa.VARCHAR(), autoincrement=False, nullable=False)) /* <=== sqlalchemy.py */ \n    ### end Alembic commands ###"
+        },
+        {
+          "sample" : "tmp1.add(User(\"admin\", \"ad@min.com\", \"admin\"))",
+          "lineNumber" : 8,
+          "columnNumber" : 1,
+          "fileName" : "/home/midas/Privado/repos/discover-flask/db_create_users.py",
+          "excerpt" : "from project.model2 import Specie\n\n\n# insert data\ndb.session.add(User(\"michael\", \"michael@realpython.com\", \"i'll-never-tell\"))\ndb.session.add(User(\"admin\", \"ad@min.com\", \"admin\")) /* <=== flask/ext/sqlalchemy.py */ \ndb.session.add(User(\"mike\", \"mike@herman.com\", \"tell\"))\n\nSpecie.query.all()\n\nSpecie.query.add_columns()"
+        },
+        {
+          "sample" : "sa.Column('password', sa.String(), nullable = True)",
+          "lineNumber" : 19,
+          "columnNumber" : 28,
+          "fileName" : "/home/midas/Privado/repos/discover-flask/migrations/versions/c1b2d6a2aa6_.py",
+          "excerpt" : "import sqlalchemy as sa\n\n\ndef upgrade():\n    ### commands auto generated by Alembic - please adjust! ###\n    op.add_column('users', sa.Column('password', sa.String(), nullable=True)) /* <=== sqlalchemy.py */ \n    ### end Alembic commands ###\n\n\ndef downgrade():\n    ### commands auto generated by Alembic - please adjust! ###"
+        }
+      ]
+    },
+    {
+      "sinkId" : "Storages.Android.SQLite.ReadAndWrite",
+      "occurrences" : [
+        {
+          "sample" : "sqlite3.connect('sample.db')",
+          "lineNumber" : 7,
+          "columnNumber" : 6,
+          "fileName" : "/home/midas/Privado/repos/discover-flask/sql.py",
+          "excerpt" : "\n\nimport sqlite3\n\n# create a new database if the database doesn't already exist\nwith sqlite3.connect('sample.db') as connection: /* <=== sqlite3.py */ \n\n    # get a cursor object used to execute SQL commands\n    c = connection.cursor()\n\n    # create the table"
+        }
+      ]
+    },
+    {
+      "sinkId" : "Storages.Framework.SQLAlchemy.Write",
+      "occurrences" : [
+        {
+          "sample" : "tmp4.add_columns()",
+          "lineNumber" : 13,
+          "columnNumber" : 1,
+          "fileName" : "/home/midas/Privado/repos/discover-flask/db_create_users.py",
+          "excerpt" : "db.session.add(User(\"admin\", \"ad@min.com\", \"admin\"))\ndb.session.add(User(\"mike\", \"mike@herman.com\", \"tell\"))\n\nSpecie.query.all()\n\nSpecie.query.add_columns() /* <=== project/model2.py */ \n\n# commit the changes\ndb.session.commit()"
+        }
+      ]
+    }
+  ],
+  "dataFlow" : {
+    "storages" : [
+      {
+        "sourceId" : "Data.Sensitive.NationalIdentificationNumbers.Passport",
+        "sinks" : [
+          {
+            "sinkType" : "storages",
+            "id" : "Storages.Framework.SQLAlchemy.Read",
+            "name" : "SQLAlchemy(Read)",
+            "category" : "",
+            "domains" : [
+              "sqlalchemy.org"
+            ],
+            "sensitivity" : "",
+            "isSensitive" : false,
+            "tags" : {
+              
+            },
+            "apiUrl" : [
+            ],
+            "databaseDetails" : {
+              "dbName" : "",
+              "dbVendor" : "",
+              "dbLocation" : "",
+              "dbOperation" : ""
+            },
+            "paths" : [
+              {
+                "pathId" : "2041-2040-2042",
+                "path" : [
+                  {
+                    "sample" : "tmp3",
+                    "lineNumber" : 11,
+                    "columnNumber" : 1,
+                    "fileName" : "/home/midas/Privado/repos/discover-flask/db_create_users.py",
+                    "excerpt" : "# insert data\ndb.session.add(User(\"michael\", \"michael@realpython.com\", \"i'll-never-tell\"))\ndb.session.add(User(\"admin\", \"ad@min.com\", \"admin\"))\ndb.session.add(User(\"mike\", \"mike@herman.com\", \"tell\"))\n\nSpecie.query.all() /* <=== project/model2.py:<module>.Specie.__init__.<member>(query) */ \n\nSpecie.query.add_columns()\n\n# commit the changes\ndb.session.commit()"
+                  },
+                  {
+                    "sample" : "tmp3.all",
+                    "lineNumber" : 11,
+                    "columnNumber" : 1,
+                    "fileName" : "/home/midas/Privado/repos/discover-flask/db_create_users.py",
+                    "excerpt" : "# insert data\ndb.session.add(User(\"michael\", \"michael@realpython.com\", \"i'll-never-tell\"))\ndb.session.add(User(\"admin\", \"ad@min.com\", \"admin\"))\ndb.session.add(User(\"mike\", \"mike@herman.com\", \"tell\"))\n\nSpecie.query.all() /* <===  */ \n\nSpecie.query.add_columns()\n\n# commit the changes\ndb.session.commit()"
+                  },
+                  {
+                    "sample" : "tmp3.all()",
+                    "lineNumber" : 11,
+                    "columnNumber" : 1,
+                    "fileName" : "/home/midas/Privado/repos/discover-flask/db_create_users.py",
+                    "excerpt" : "# insert data\ndb.session.add(User(\"michael\", \"michael@realpython.com\", \"i'll-never-tell\"))\ndb.session.add(User(\"admin\", \"ad@min.com\", \"admin\"))\ndb.session.add(User(\"mike\", \"mike@herman.com\", \"tell\"))\n\nSpecie.query.all() /* <=== project/model2.py */ \n\nSpecie.query.add_columns()\n\n# commit the changes\ndb.session.commit()"
+                  }
+                ]
+              }
+            ]
+          },
+          {
+            "sinkType" : "storages",
+            "id" : "Storages.Framework.SQLAlchemy.Write",
+            "name" : "SQLAlchemy(Write)",
+            "category" : "",
+            "domains" : [
+              "sqlalchemy.org"
+            ],
+            "sensitivity" : "",
+            "isSensitive" : false,
+            "tags" : {
+              
+            },
+            "apiUrl" : [
+            ],
+            "databaseDetails" : {
+              "dbName" : "",
+              "dbVendor" : "",
+              "dbLocation" : "",
+              "dbOperation" : ""
+            },
+            "paths" : [
+              {
+                "pathId" : "2052-2051-2053",
+                "path" : [
+                  {
+                    "sample" : "tmp4",
+                    "lineNumber" : 13,
+                    "columnNumber" : 1,
+                    "fileName" : "/home/midas/Privado/repos/discover-flask/db_create_users.py",
+                    "excerpt" : "db.session.add(User(\"admin\", \"ad@min.com\", \"admin\"))\ndb.session.add(User(\"mike\", \"mike@herman.com\", \"tell\"))\n\nSpecie.query.all()\n\nSpecie.query.add_columns() /* <=== project/model2.py:<module>.Specie.__init__.<member>(query) */ \n\n# commit the changes\ndb.session.commit()"
+                  },
+                  {
+                    "sample" : "tmp4.add_columns",
+                    "lineNumber" : 13,
+                    "columnNumber" : 1,
+                    "fileName" : "/home/midas/Privado/repos/discover-flask/db_create_users.py",
+                    "excerpt" : "db.session.add(User(\"admin\", \"ad@min.com\", \"admin\"))\ndb.session.add(User(\"mike\", \"mike@herman.com\", \"tell\"))\n\nSpecie.query.all()\n\nSpecie.query.add_columns() /* <===  */ \n\n# commit the changes\ndb.session.commit()"
+                  },
+                  {
+                    "sample" : "tmp4.add_columns()",
+                    "lineNumber" : 13,
+                    "columnNumber" : 1,
+                    "fileName" : "/home/midas/Privado/repos/discover-flask/db_create_users.py",
+                    "excerpt" : "db.session.add(User(\"admin\", \"ad@min.com\", \"admin\"))\ndb.session.add(User(\"mike\", \"mike@herman.com\", \"tell\"))\n\nSpecie.query.all()\n\nSpecie.query.add_columns() /* <=== project/model2.py */ \n\n# commit the changes\ndb.session.commit()"
+                  }
+                ]
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "sourceId" : "Data.Sensitive.AccountData.AccountPassword",
+        "sinks" : [
+          {
+            "sinkType" : "storages",
+            "id" : "Storages.SQLAlchemy",
+            "name" : "SQLAlchemy",
+            "category" : "",
+            "domains" : [
+              "sqlalchemy.org"
+            ],
+            "sensitivity" : "",
+            "isSensitive" : false,
+            "tags" : {
+              
+            },
+            "apiUrl" : [
+            ],
+            "databaseDetails" : {
+              "dbName" : "",
+              "dbVendor" : "",
+              "dbLocation" : "",
+              "dbOperation" : ""
+            },
+            "paths" : [
+              {
+                "pathId" : "3932-3934-3943-3944",
+                "path" : [
+                  {
+                    "sample" : "password",
+                    "lineNumber" : 33,
+                    "columnNumber" : 5,
+                    "fileName" : "/home/midas/Privado/repos/discover-flask/project/models.py",
+                    "excerpt" : "    __tablename__ = \"users\"\n\n    id = db.Column(db.Integer, primary_key=True)\n    name = db.Column(db.String, nullable=False)\n    email = db.Column(db.String, nullable=False)\n    password = db.Column(db.String) /* <=== 'password' is a member of 'project/models.py:<module>.User' class */ \n    posts = relationship(\"BlogPost\", backref=\"author\")\n\n    def __init__(self, name, email, password):\n        self.name = name\n        self.email = email"
+                  },
+                  {
+                    "sample" : "user",
+                    "lineNumber" : 60,
+                    "columnNumber" : 9,
+                    "fileName" : "/home/midas/Privado/repos/discover-flask/project/users/views.py",
+                    "excerpt" : "@users_blueprint.route(\n    '/register/', methods=['GET', 'POST'])   # pragma: no cover\ndef register():\n    form = RegisterForm()\n    if form.validate_on_submit():\n        user = User( /* <=== project/models.py:<module>.User */ \n            name=form.username.data,\n            email=form.email.data,\n            password=form.password.data\n        )\n        db.session.add(user)"
+                  },
+                  {
+                    "sample" : "user",
+                    "lineNumber" : 65,
+                    "columnNumber" : 24,
+                    "fileName" : "/home/midas/Privado/repos/discover-flask/project/users/views.py",
+                    "excerpt" : "        user = User(\n            name=form.username.data,\n            email=form.email.data,\n            password=form.password.data\n        )\n        db.session.add(user) /* <=== ANY */ \n        db.session.commit()\n        login_user(user)\n        return redirect(url_for('home.home'))\n    return render_template('register.html', form=form)"
+                  },
+                  {
+                    "sample" : "tmp2",
+                    "lineNumber" : 65,
+                    "columnNumber" : 9,
+                    "fileName" : "/home/midas/Privado/repos/discover-flask/project/users/views.py",
+                    "excerpt" : "        user = User(\n            name=form.username.data,\n            email=form.email.data,\n            password=form.password.data\n        )\n        db.session.add(user) /* <=== flask/ext/sqlalchemy.py:<module>.SQLAlchemy.<member>(session) */ \n        db.session.commit()\n        login_user(user)\n        return redirect(url_for('home.home'))\n    return render_template('register.html', form=form)"
+                  },
+                  {
+                    "sample" : "tmp2.add(user)",
+                    "lineNumber" : 65,
+                    "columnNumber" : 9,
+                    "fileName" : "/home/midas/Privado/repos/discover-flask/project/users/views.py",
+                    "excerpt" : "        user = User(\n            name=form.username.data,\n            email=form.email.data,\n            password=form.password.data\n        )\n        db.session.add(user) /* <=== flask/ext/sqlalchemy.py */ \n        db.session.commit()\n        login_user(user)\n        return redirect(url_for('home.home'))\n    return render_template('register.html', form=form)"
+                  }
+                ]
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "sourceId" : "Data.Sensitive.ContactData.EmailAddress",
+        "sinks" : [
+          {
+            "sinkType" : "storages",
+            "id" : "Storages.SQLAlchemy",
+            "name" : "SQLAlchemy",
+            "category" : "",
+            "domains" : [
+              "sqlalchemy.org"
+            ],
+            "sensitivity" : "",
+            "isSensitive" : false,
+            "tags" : {
+              
+            },
+            "apiUrl" : [
+            ],
+            "databaseDetails" : {
+              "dbName" : "",
+              "dbVendor" : "",
+              "dbLocation" : "",
+              "dbOperation" : ""
+            },
+            "paths" : [
+              {
+                "pathId" : "3932-3934-3943-3944",
+                "path" : [
+                  {
+                    "sample" : "email",
+                    "lineNumber" : 32,
+                    "columnNumber" : 5,
+                    "fileName" : "/home/midas/Privado/repos/discover-flask/project/models.py",
+                    "excerpt" : "\n    __tablename__ = \"users\"\n\n    id = db.Column(db.Integer, primary_key=True)\n    name = db.Column(db.String, nullable=False)\n    email = db.Column(db.String, nullable=False) /* <=== 'email' is a member of 'project/models.py:<module>.User' class */ \n    password = db.Column(db.String)\n    posts = relationship(\"BlogPost\", backref=\"author\")\n\n    def __init__(self, name, email, password):\n        self.name = name"
+                  },
+                  {
+                    "sample" : "user",
+                    "lineNumber" : 60,
+                    "columnNumber" : 9,
+                    "fileName" : "/home/midas/Privado/repos/discover-flask/project/users/views.py",
+                    "excerpt" : "@users_blueprint.route(\n    '/register/', methods=['GET', 'POST'])   # pragma: no cover\ndef register():\n    form = RegisterForm()\n    if form.validate_on_submit():\n        user = User( /* <=== project/models.py:<module>.User */ \n            name=form.username.data,\n            email=form.email.data,\n            password=form.password.data\n        )\n        db.session.add(user)"
+                  },
+                  {
+                    "sample" : "user",
+                    "lineNumber" : 65,
+                    "columnNumber" : 24,
+                    "fileName" : "/home/midas/Privado/repos/discover-flask/project/users/views.py",
+                    "excerpt" : "        user = User(\n            name=form.username.data,\n            email=form.email.data,\n            password=form.password.data\n        )\n        db.session.add(user) /* <=== ANY */ \n        db.session.commit()\n        login_user(user)\n        return redirect(url_for('home.home'))\n    return render_template('register.html', form=form)"
+                  },
+                  {
+                    "sample" : "tmp2",
+                    "lineNumber" : 65,
+                    "columnNumber" : 9,
+                    "fileName" : "/home/midas/Privado/repos/discover-flask/project/users/views.py",
+                    "excerpt" : "        user = User(\n            name=form.username.data,\n            email=form.email.data,\n            password=form.password.data\n        )\n        db.session.add(user) /* <=== flask/ext/sqlalchemy.py:<module>.SQLAlchemy.<member>(session) */ \n        db.session.commit()\n        login_user(user)\n        return redirect(url_for('home.home'))\n    return render_template('register.html', form=form)"
+                  },
+                  {
+                    "sample" : "tmp2.add(user)",
+                    "lineNumber" : 65,
+                    "columnNumber" : 9,
+                    "fileName" : "/home/midas/Privado/repos/discover-flask/project/users/views.py",
+                    "excerpt" : "        user = User(\n            name=form.username.data,\n            email=form.email.data,\n            password=form.password.data\n        )\n        db.session.add(user) /* <=== flask/ext/sqlalchemy.py */ \n        db.session.commit()\n        login_user(user)\n        return redirect(url_for('home.home'))\n    return render_template('register.html', form=form)"
+                  }
+                ]
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "sourceId" : "Data.Sensitive.PersonalIdentification.FirstName",
+        "sinks" : [
+          {
+            "sinkType" : "storages",
+            "id" : "Storages.Framework.SQLAlchemy.Read",
+            "name" : "SQLAlchemy(Read)",
+            "category" : "",
+            "domains" : [
+              "sqlalchemy.org"
+            ],
+            "sensitivity" : "",
+            "isSensitive" : false,
+            "tags" : {
+              
+            },
+            "apiUrl" : [
+            ],
+            "databaseDetails" : {
+              "dbName" : "",
+              "dbVendor" : "",
+              "dbLocation" : "",
+              "dbOperation" : ""
+            },
+            "paths" : [
+              {
+                "pathId" : "2041-2040-2042",
+                "path" : [
+                  {
+                    "sample" : "tmp3",
+                    "lineNumber" : 11,
+                    "columnNumber" : 1,
+                    "fileName" : "/home/midas/Privado/repos/discover-flask/db_create_users.py",
+                    "excerpt" : "# insert data\ndb.session.add(User(\"michael\", \"michael@realpython.com\", \"i'll-never-tell\"))\ndb.session.add(User(\"admin\", \"ad@min.com\", \"admin\"))\ndb.session.add(User(\"mike\", \"mike@herman.com\", \"tell\"))\n\nSpecie.query.all() /* <=== project/model2.py:<module>.Specie.__init__.<member>(query) */ \n\nSpecie.query.add_columns()\n\n# commit the changes\ndb.session.commit()"
+                  },
+                  {
+                    "sample" : "tmp3.all",
+                    "lineNumber" : 11,
+                    "columnNumber" : 1,
+                    "fileName" : "/home/midas/Privado/repos/discover-flask/db_create_users.py",
+                    "excerpt" : "# insert data\ndb.session.add(User(\"michael\", \"michael@realpython.com\", \"i'll-never-tell\"))\ndb.session.add(User(\"admin\", \"ad@min.com\", \"admin\"))\ndb.session.add(User(\"mike\", \"mike@herman.com\", \"tell\"))\n\nSpecie.query.all() /* <===  */ \n\nSpecie.query.add_columns()\n\n# commit the changes\ndb.session.commit()"
+                  },
+                  {
+                    "sample" : "tmp3.all()",
+                    "lineNumber" : 11,
+                    "columnNumber" : 1,
+                    "fileName" : "/home/midas/Privado/repos/discover-flask/db_create_users.py",
+                    "excerpt" : "# insert data\ndb.session.add(User(\"michael\", \"michael@realpython.com\", \"i'll-never-tell\"))\ndb.session.add(User(\"admin\", \"ad@min.com\", \"admin\"))\ndb.session.add(User(\"mike\", \"mike@herman.com\", \"tell\"))\n\nSpecie.query.all() /* <=== project/model2.py */ \n\nSpecie.query.add_columns()\n\n# commit the changes\ndb.session.commit()"
+                  }
+                ]
+              }
+            ]
+          },
+          {
+            "sinkType" : "storages",
+            "id" : "Storages.Framework.SQLAlchemy.Write",
+            "name" : "SQLAlchemy(Write)",
+            "category" : "",
+            "domains" : [
+              "sqlalchemy.org"
+            ],
+            "sensitivity" : "",
+            "isSensitive" : false,
+            "tags" : {
+              
+            },
+            "apiUrl" : [
+            ],
+            "databaseDetails" : {
+              "dbName" : "",
+              "dbVendor" : "",
+              "dbLocation" : "",
+              "dbOperation" : ""
+            },
+            "paths" : [
+              {
+                "pathId" : "2052-2051-2053",
+                "path" : [
+                  {
+                    "sample" : "tmp4",
+                    "lineNumber" : 13,
+                    "columnNumber" : 1,
+                    "fileName" : "/home/midas/Privado/repos/discover-flask/db_create_users.py",
+                    "excerpt" : "db.session.add(User(\"admin\", \"ad@min.com\", \"admin\"))\ndb.session.add(User(\"mike\", \"mike@herman.com\", \"tell\"))\n\nSpecie.query.all()\n\nSpecie.query.add_columns() /* <=== project/model2.py:<module>.Specie.__init__.<member>(query) */ \n\n# commit the changes\ndb.session.commit()"
+                  },
+                  {
+                    "sample" : "tmp4.add_columns",
+                    "lineNumber" : 13,
+                    "columnNumber" : 1,
+                    "fileName" : "/home/midas/Privado/repos/discover-flask/db_create_users.py",
+                    "excerpt" : "db.session.add(User(\"admin\", \"ad@min.com\", \"admin\"))\ndb.session.add(User(\"mike\", \"mike@herman.com\", \"tell\"))\n\nSpecie.query.all()\n\nSpecie.query.add_columns() /* <===  */ \n\n# commit the changes\ndb.session.commit()"
+                  },
+                  {
+                    "sample" : "tmp4.add_columns()",
+                    "lineNumber" : 13,
+                    "columnNumber" : 1,
+                    "fileName" : "/home/midas/Privado/repos/discover-flask/db_create_users.py",
+                    "excerpt" : "db.session.add(User(\"admin\", \"ad@min.com\", \"admin\"))\ndb.session.add(User(\"mike\", \"mike@herman.com\", \"tell\"))\n\nSpecie.query.all()\n\nSpecie.query.add_columns() /* <=== project/model2.py */ \n\n# commit the changes\ndb.session.commit()"
+                  }
+                ]
+              }
+            ]
+          }
+        ]
+      }
+    ],
+    "internal_apis" : [
+    ],
+    "leakages" : [
+      {
+        "sourceId" : "Data.Sensitive.AccountData.AccountPassword",
+        "sinks" : [
+          {
+            "sinkType" : "leakages",
+            "id" : "Leakages.Log.Info",
+            "name" : "Log Info",
+            "category" : "",
+            "domains" : [
+            ],
+            "sensitivity" : "",
+            "isSensitive" : false,
+            "tags" : {
+              
+            },
+            "apiUrl" : [
+            ],
+            "databaseDetails" : {
+              "dbName" : "",
+              "dbVendor" : "",
+              "dbLocation" : "",
+              "dbOperation" : ""
+            },
+            "paths" : [
+              {
+                "pathId" : "3771-3772",
+                "path" : [
+                  {
+                    "sample" : "password",
+                    "lineNumber" : 8,
+                    "columnNumber" : 5,
+                    "fileName" : "/home/midas/Privado/repos/discover-flask/project/users/forms.py",
+                    "excerpt" : "from wtforms.validators import DataRequired, Length, Email, EqualTo\n\n\nclass LoginForm(Form):\n    username = TextField('Username', validators=[DataRequired()])\n    password = PasswordField('Password', validators=[DataRequired()]) /* <=== 'password' is a member of 'project/users/forms.py:<module>.LoginForm' class */ \n\n\nclass RegisterForm(Form):\n    username = TextField(\n        'username',"
+                  },
+                  {
+                    "sample" : "LoginForm",
+                    "lineNumber" : 31,
+                    "columnNumber" : 12,
+                    "fileName" : "/home/midas/Privado/repos/discover-flask/project/users/views.py",
+                    "excerpt" : "################\n\n@users_blueprint.route('/login', methods=['GET', 'POST'])   # pragma: no cover\ndef login():\n    error = None\n    form = LoginForm(request.form) /* <=== project/users/forms.py:<module>.LoginForm */ \n    if request.method == 'POST':\n        if form.validate_on_submit():\n            user = User.query.filter_by(name=request.form['username']).first()\n            if user is not None and bcrypt.check_password_hash(\n                user.password, request.form['password']"
+                  },
+                  {
+                    "sample" : "LoginForm(request.form)",
+                    "lineNumber" : 31,
+                    "columnNumber" : 12,
+                    "fileName" : "/home/midas/Privado/repos/discover-flask/project/users/views.py",
+                    "excerpt" : "################\n\n@users_blueprint.route('/login', methods=['GET', 'POST'])   # pragma: no cover\ndef login():\n    error = None\n    form = LoginForm(request.form) /* <=== project/users/forms.py */ \n    if request.method == 'POST':\n        if form.validate_on_submit():\n            user = User.query.filter_by(name=request.form['username']).first()\n            if user is not None and bcrypt.check_password_hash(\n                user.password, request.form['password']"
+                  }
+                ]
+              },
+              {
+                "pathId" : "3771-3772-3773-3783-3784",
+                "path" : [
+                  {
+                    "sample" : "password",
+                    "lineNumber" : 8,
+                    "columnNumber" : 5,
+                    "fileName" : "/home/midas/Privado/repos/discover-flask/project/users/forms.py",
+                    "excerpt" : "from wtforms.validators import DataRequired, Length, Email, EqualTo\n\n\nclass LoginForm(Form):\n    username = TextField('Username', validators=[DataRequired()])\n    password = PasswordField('Password', validators=[DataRequired()]) /* <=== 'password' is a member of 'project/users/forms.py:<module>.LoginForm' class */ \n\n\nclass RegisterForm(Form):\n    username = TextField(\n        'username',"
+                  },
+                  {
+                    "sample" : "LoginForm",
+                    "lineNumber" : 31,
+                    "columnNumber" : 12,
+                    "fileName" : "/home/midas/Privado/repos/discover-flask/project/users/views.py",
+                    "excerpt" : "################\n\n@users_blueprint.route('/login', methods=['GET', 'POST'])   # pragma: no cover\ndef login():\n    error = None\n    form = LoginForm(request.form) /* <=== project/users/forms.py:<module>.LoginForm */ \n    if request.method == 'POST':\n        if form.validate_on_submit():\n            user = User.query.filter_by(name=request.form['username']).first()\n            if user is not None and bcrypt.check_password_hash(\n                user.password, request.form['password']"
+                  },
+                  {
+                    "sample" : "LoginForm(request.form)",
+                    "lineNumber" : 31,
+                    "columnNumber" : 12,
+                    "fileName" : "/home/midas/Privado/repos/discover-flask/project/users/views.py",
+                    "excerpt" : "################\n\n@users_blueprint.route('/login', methods=['GET', 'POST'])   # pragma: no cover\ndef login():\n    error = None\n    form = LoginForm(request.form) /* <=== project/users/forms.py */ \n    if request.method == 'POST':\n        if form.validate_on_submit():\n            user = User.query.filter_by(name=request.form['username']).first()\n            if user is not None and bcrypt.check_password_hash(\n                user.password, request.form['password']"
+                  },
+                  {
+                    "sample" : "form",
+                    "lineNumber" : 31,
+                    "columnNumber" : 5,
+                    "fileName" : "/home/midas/Privado/repos/discover-flask/project/users/views.py",
+                    "excerpt" : "################\n\n@users_blueprint.route('/login', methods=['GET', 'POST'])   # pragma: no cover\ndef login():\n    error = None\n    form = LoginForm(request.form) /* <=== ANY */ \n    if request.method == 'POST':\n        if form.validate_on_submit():\n            user = User.query.filter_by(name=request.form['username']).first()\n            if user is not None and bcrypt.check_password_hash(\n                user.password, request.form['password']"
+                  },
+                  {
+                    "sample" : "form",
+                    "lineNumber" : 33,
+                    "columnNumber" : 12,
+                    "fileName" : "/home/midas/Privado/repos/discover-flask/project/users/views.py",
+                    "excerpt" : "@users_blueprint.route('/login', methods=['GET', 'POST'])   # pragma: no cover\ndef login():\n    error = None\n    form = LoginForm(request.form)\n    if request.method == 'POST':\n        if form.validate_on_submit(): /* <=== ANY */ \n            user = User.query.filter_by(name=request.form['username']).first()\n            if user is not None and bcrypt.check_password_hash(\n                user.password, request.form['password']\n            ):\n                login_user(user)"
+                  },
+                  {
+                    "sample" : "form.validate_on_submit()",
+                    "lineNumber" : 33,
+                    "columnNumber" : 12,
+                    "fileName" : "/home/midas/Privado/repos/discover-flask/project/users/views.py",
+                    "excerpt" : "@users_blueprint.route('/login', methods=['GET', 'POST'])   # pragma: no cover\ndef login():\n    error = None\n    form = LoginForm(request.form)\n    if request.method == 'POST':\n        if form.validate_on_submit(): /* <=== project/users/forms.py */ \n            user = User.query.filter_by(name=request.form['username']).first()\n            if user is not None and bcrypt.check_password_hash(\n                user.password, request.form['password']\n            ):\n                login_user(user)"
+                  }
+                ]
+              },
+              {
+                "pathId" : "3906-3907-3908-3913-3914",
+                "path" : [
+                  {
+                    "sample" : "password",
+                    "lineNumber" : 20,
+                    "columnNumber" : 5,
+                    "fileName" : "/home/midas/Privado/repos/discover-flask/project/users/forms.py",
+                    "excerpt" : "    )\n    email = TextField(\n        'email',\n        validators=[DataRequired(), Email(message=None), Length(min=6, max=40)]\n    )\n    password = PasswordField( /* <=== 'password' is a member of 'project/users/forms.py:<module>.RegisterForm' class */ \n        'password',\n        validators=[DataRequired(), Length(min=6, max=25)]\n    )\n    confirm = PasswordField(\n        'Repeat password',"
+                  },
+                  {
+                    "sample" : "RegisterForm",
+                    "lineNumber" : 58,
+                    "columnNumber" : 12,
+                    "fileName" : "/home/midas/Privado/repos/discover-flask/project/users/views.py",
+                    "excerpt" : "\n\n@users_blueprint.route(\n    '/register/', methods=['GET', 'POST'])   # pragma: no cover\ndef register():\n    form = RegisterForm() /* <=== project/users/forms.py:<module>.RegisterForm */ \n    if form.validate_on_submit():\n        user = User(\n            name=form.username.data,\n            email=form.email.data,\n            password=form.password.data"
+                  },
+                  {
+                    "sample" : "RegisterForm()",
+                    "lineNumber" : 58,
+                    "columnNumber" : 12,
+                    "fileName" : "/home/midas/Privado/repos/discover-flask/project/users/views.py",
+                    "excerpt" : "\n\n@users_blueprint.route(\n    '/register/', methods=['GET', 'POST'])   # pragma: no cover\ndef register():\n    form = RegisterForm() /* <=== project/users/forms.py */ \n    if form.validate_on_submit():\n        user = User(\n            name=form.username.data,\n            email=form.email.data,\n            password=form.password.data"
+                  },
+                  {
+                    "sample" : "form",
+                    "lineNumber" : 58,
+                    "columnNumber" : 5,
+                    "fileName" : "/home/midas/Privado/repos/discover-flask/project/users/views.py",
+                    "excerpt" : "\n\n@users_blueprint.route(\n    '/register/', methods=['GET', 'POST'])   # pragma: no cover\ndef register():\n    form = RegisterForm() /* <=== ANY */ \n    if form.validate_on_submit():\n        user = User(\n            name=form.username.data,\n            email=form.email.data,\n            password=form.password.data"
+                  },
+                  {
+                    "sample" : "form",
+                    "lineNumber" : 59,
+                    "columnNumber" : 8,
+                    "fileName" : "/home/midas/Privado/repos/discover-flask/project/users/views.py",
+                    "excerpt" : "\n@users_blueprint.route(\n    '/register/', methods=['GET', 'POST'])   # pragma: no cover\ndef register():\n    form = RegisterForm()\n    if form.validate_on_submit(): /* <=== ANY */ \n        user = User(\n            name=form.username.data,\n            email=form.email.data,\n            password=form.password.data\n        )"
+                  },
+                  {
+                    "sample" : "form.validate_on_submit()",
+                    "lineNumber" : 59,
+                    "columnNumber" : 8,
+                    "fileName" : "/home/midas/Privado/repos/discover-flask/project/users/views.py",
+                    "excerpt" : "\n@users_blueprint.route(\n    '/register/', methods=['GET', 'POST'])   # pragma: no cover\ndef register():\n    form = RegisterForm()\n    if form.validate_on_submit(): /* <=== project/users/forms.py */ \n        user = User(\n            name=form.username.data,\n            email=form.email.data,\n            password=form.password.data\n        )"
+                  }
+                ]
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "sourceId" : "Data.Sensitive.AccountData.AccountName",
+        "sinks" : [
+          {
+            "sinkType" : "leakages",
+            "id" : "Leakages.Log.Info",
+            "name" : "Log Info",
+            "category" : "",
+            "domains" : [
+            ],
+            "sensitivity" : "",
+            "isSensitive" : false,
+            "tags" : {
+              
+            },
+            "apiUrl" : [
+            ],
+            "databaseDetails" : {
+              "dbName" : "",
+              "dbVendor" : "",
+              "dbLocation" : "",
+              "dbOperation" : ""
+            },
+            "paths" : [
+              {
+                "pathId" : "3771-3772",
+                "path" : [
+                  {
+                    "sample" : "username",
+                    "lineNumber" : 7,
+                    "columnNumber" : 5,
+                    "fileName" : "/home/midas/Privado/repos/discover-flask/project/users/forms.py",
+                    "excerpt" : "from wtforms import TextField, PasswordField\nfrom wtforms.validators import DataRequired, Length, Email, EqualTo\n\n\nclass LoginForm(Form):\n    username = TextField('Username', validators=[DataRequired()]) /* <=== 'username' is a member of 'project/users/forms.py:<module>.LoginForm' class */ \n    password = PasswordField('Password', validators=[DataRequired()])\n\n\nclass RegisterForm(Form):\n    username = TextField("
+                  },
+                  {
+                    "sample" : "LoginForm",
+                    "lineNumber" : 31,
+                    "columnNumber" : 12,
+                    "fileName" : "/home/midas/Privado/repos/discover-flask/project/users/views.py",
+                    "excerpt" : "################\n\n@users_blueprint.route('/login', methods=['GET', 'POST'])   # pragma: no cover\ndef login():\n    error = None\n    form = LoginForm(request.form) /* <=== project/users/forms.py:<module>.LoginForm */ \n    if request.method == 'POST':\n        if form.validate_on_submit():\n            user = User.query.filter_by(name=request.form['username']).first()\n            if user is not None and bcrypt.check_password_hash(\n                user.password, request.form['password']"
+                  },
+                  {
+                    "sample" : "LoginForm(request.form)",
+                    "lineNumber" : 31,
+                    "columnNumber" : 12,
+                    "fileName" : "/home/midas/Privado/repos/discover-flask/project/users/views.py",
+                    "excerpt" : "################\n\n@users_blueprint.route('/login', methods=['GET', 'POST'])   # pragma: no cover\ndef login():\n    error = None\n    form = LoginForm(request.form) /* <=== project/users/forms.py */ \n    if request.method == 'POST':\n        if form.validate_on_submit():\n            user = User.query.filter_by(name=request.form['username']).first()\n            if user is not None and bcrypt.check_password_hash(\n                user.password, request.form['password']"
+                  }
+                ]
+              },
+              {
+                "pathId" : "3771-3772-3773-3783-3784",
+                "path" : [
+                  {
+                    "sample" : "username",
+                    "lineNumber" : 7,
+                    "columnNumber" : 5,
+                    "fileName" : "/home/midas/Privado/repos/discover-flask/project/users/forms.py",
+                    "excerpt" : "from wtforms import TextField, PasswordField\nfrom wtforms.validators import DataRequired, Length, Email, EqualTo\n\n\nclass LoginForm(Form):\n    username = TextField('Username', validators=[DataRequired()]) /* <=== 'username' is a member of 'project/users/forms.py:<module>.LoginForm' class */ \n    password = PasswordField('Password', validators=[DataRequired()])\n\n\nclass RegisterForm(Form):\n    username = TextField("
+                  },
+                  {
+                    "sample" : "LoginForm",
+                    "lineNumber" : 31,
+                    "columnNumber" : 12,
+                    "fileName" : "/home/midas/Privado/repos/discover-flask/project/users/views.py",
+                    "excerpt" : "################\n\n@users_blueprint.route('/login', methods=['GET', 'POST'])   # pragma: no cover\ndef login():\n    error = None\n    form = LoginForm(request.form) /* <=== project/users/forms.py:<module>.LoginForm */ \n    if request.method == 'POST':\n        if form.validate_on_submit():\n            user = User.query.filter_by(name=request.form['username']).first()\n            if user is not None and bcrypt.check_password_hash(\n                user.password, request.form['password']"
+                  },
+                  {
+                    "sample" : "LoginForm(request.form)",
+                    "lineNumber" : 31,
+                    "columnNumber" : 12,
+                    "fileName" : "/home/midas/Privado/repos/discover-flask/project/users/views.py",
+                    "excerpt" : "################\n\n@users_blueprint.route('/login', methods=['GET', 'POST'])   # pragma: no cover\ndef login():\n    error = None\n    form = LoginForm(request.form) /* <=== project/users/forms.py */ \n    if request.method == 'POST':\n        if form.validate_on_submit():\n            user = User.query.filter_by(name=request.form['username']).first()\n            if user is not None and bcrypt.check_password_hash(\n                user.password, request.form['password']"
+                  },
+                  {
+                    "sample" : "form",
+                    "lineNumber" : 31,
+                    "columnNumber" : 5,
+                    "fileName" : "/home/midas/Privado/repos/discover-flask/project/users/views.py",
+                    "excerpt" : "################\n\n@users_blueprint.route('/login', methods=['GET', 'POST'])   # pragma: no cover\ndef login():\n    error = None\n    form = LoginForm(request.form) /* <=== ANY */ \n    if request.method == 'POST':\n        if form.validate_on_submit():\n            user = User.query.filter_by(name=request.form['username']).first()\n            if user is not None and bcrypt.check_password_hash(\n                user.password, request.form['password']"
+                  },
+                  {
+                    "sample" : "form",
+                    "lineNumber" : 33,
+                    "columnNumber" : 12,
+                    "fileName" : "/home/midas/Privado/repos/discover-flask/project/users/views.py",
+                    "excerpt" : "@users_blueprint.route('/login', methods=['GET', 'POST'])   # pragma: no cover\ndef login():\n    error = None\n    form = LoginForm(request.form)\n    if request.method == 'POST':\n        if form.validate_on_submit(): /* <=== ANY */ \n            user = User.query.filter_by(name=request.form['username']).first()\n            if user is not None and bcrypt.check_password_hash(\n                user.password, request.form['password']\n            ):\n                login_user(user)"
+                  },
+                  {
+                    "sample" : "form.validate_on_submit()",
+                    "lineNumber" : 33,
+                    "columnNumber" : 12,
+                    "fileName" : "/home/midas/Privado/repos/discover-flask/project/users/views.py",
+                    "excerpt" : "@users_blueprint.route('/login', methods=['GET', 'POST'])   # pragma: no cover\ndef login():\n    error = None\n    form = LoginForm(request.form)\n    if request.method == 'POST':\n        if form.validate_on_submit(): /* <=== project/users/forms.py */ \n            user = User.query.filter_by(name=request.form['username']).first()\n            if user is not None and bcrypt.check_password_hash(\n                user.password, request.form['password']\n            ):\n                login_user(user)"
+                  }
+                ]
+              },
+              {
+                "pathId" : "3906-3907-3908-3913-3914",
+                "path" : [
+                  {
+                    "sample" : "username",
+                    "lineNumber" : 12,
+                    "columnNumber" : 5,
+                    "fileName" : "/home/midas/Privado/repos/discover-flask/project/users/forms.py",
+                    "excerpt" : "    username = TextField('Username', validators=[DataRequired()])\n    password = PasswordField('Password', validators=[DataRequired()])\n\n\nclass RegisterForm(Form):\n    username = TextField( /* <=== 'username' is a member of 'project/users/forms.py:<module>.RegisterForm' class */ \n        'username',\n        validators=[DataRequired(), Length(min=3, max=25)]\n    )\n    email = TextField(\n        'email',"
+                  },
+                  {
+                    "sample" : "RegisterForm",
+                    "lineNumber" : 58,
+                    "columnNumber" : 12,
+                    "fileName" : "/home/midas/Privado/repos/discover-flask/project/users/views.py",
+                    "excerpt" : "\n\n@users_blueprint.route(\n    '/register/', methods=['GET', 'POST'])   # pragma: no cover\ndef register():\n    form = RegisterForm() /* <=== project/users/forms.py:<module>.RegisterForm */ \n    if form.validate_on_submit():\n        user = User(\n            name=form.username.data,\n            email=form.email.data,\n            password=form.password.data"
+                  },
+                  {
+                    "sample" : "RegisterForm()",
+                    "lineNumber" : 58,
+                    "columnNumber" : 12,
+                    "fileName" : "/home/midas/Privado/repos/discover-flask/project/users/views.py",
+                    "excerpt" : "\n\n@users_blueprint.route(\n    '/register/', methods=['GET', 'POST'])   # pragma: no cover\ndef register():\n    form = RegisterForm() /* <=== project/users/forms.py */ \n    if form.validate_on_submit():\n        user = User(\n            name=form.username.data,\n            email=form.email.data,\n            password=form.password.data"
+                  },
+                  {
+                    "sample" : "form",
+                    "lineNumber" : 58,
+                    "columnNumber" : 5,
+                    "fileName" : "/home/midas/Privado/repos/discover-flask/project/users/views.py",
+                    "excerpt" : "\n\n@users_blueprint.route(\n    '/register/', methods=['GET', 'POST'])   # pragma: no cover\ndef register():\n    form = RegisterForm() /* <=== ANY */ \n    if form.validate_on_submit():\n        user = User(\n            name=form.username.data,\n            email=form.email.data,\n            password=form.password.data"
+                  },
+                  {
+                    "sample" : "form",
+                    "lineNumber" : 59,
+                    "columnNumber" : 8,
+                    "fileName" : "/home/midas/Privado/repos/discover-flask/project/users/views.py",
+                    "excerpt" : "\n@users_blueprint.route(\n    '/register/', methods=['GET', 'POST'])   # pragma: no cover\ndef register():\n    form = RegisterForm()\n    if form.validate_on_submit(): /* <=== ANY */ \n        user = User(\n            name=form.username.data,\n            email=form.email.data,\n            password=form.password.data\n        )"
+                  },
+                  {
+                    "sample" : "form.validate_on_submit()",
+                    "lineNumber" : 59,
+                    "columnNumber" : 8,
+                    "fileName" : "/home/midas/Privado/repos/discover-flask/project/users/views.py",
+                    "excerpt" : "\n@users_blueprint.route(\n    '/register/', methods=['GET', 'POST'])   # pragma: no cover\ndef register():\n    form = RegisterForm()\n    if form.validate_on_submit(): /* <=== project/users/forms.py */ \n        user = User(\n            name=form.username.data,\n            email=form.email.data,\n            password=form.password.data\n        )"
+                  }
+                ]
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "sourceId" : "Data.Sensitive.ContactData.EmailAddress",
+        "sinks" : [
+          {
+            "sinkType" : "leakages",
+            "id" : "Leakages.Log.Info",
+            "name" : "Log Info",
+            "category" : "",
+            "domains" : [
+            ],
+            "sensitivity" : "",
+            "isSensitive" : false,
+            "tags" : {
+              
+            },
+            "apiUrl" : [
+            ],
+            "databaseDetails" : {
+              "dbName" : "",
+              "dbVendor" : "",
+              "dbLocation" : "",
+              "dbOperation" : ""
+            },
+            "paths" : [
+              {
+                "pathId" : "3906-3907-3908-3913-3914",
+                "path" : [
+                  {
+                    "sample" : "email",
+                    "lineNumber" : 16,
+                    "columnNumber" : 5,
+                    "fileName" : "/home/midas/Privado/repos/discover-flask/project/users/forms.py",
+                    "excerpt" : "class RegisterForm(Form):\n    username = TextField(\n        'username',\n        validators=[DataRequired(), Length(min=3, max=25)]\n    )\n    email = TextField( /* <=== 'email' is a member of 'project/users/forms.py:<module>.RegisterForm' class */ \n        'email',\n        validators=[DataRequired(), Email(message=None), Length(min=6, max=40)]\n    )\n    password = PasswordField(\n        'password',"
+                  },
+                  {
+                    "sample" : "RegisterForm",
+                    "lineNumber" : 58,
+                    "columnNumber" : 12,
+                    "fileName" : "/home/midas/Privado/repos/discover-flask/project/users/views.py",
+                    "excerpt" : "\n\n@users_blueprint.route(\n    '/register/', methods=['GET', 'POST'])   # pragma: no cover\ndef register():\n    form = RegisterForm() /* <=== project/users/forms.py:<module>.RegisterForm */ \n    if form.validate_on_submit():\n        user = User(\n            name=form.username.data,\n            email=form.email.data,\n            password=form.password.data"
+                  },
+                  {
+                    "sample" : "RegisterForm()",
+                    "lineNumber" : 58,
+                    "columnNumber" : 12,
+                    "fileName" : "/home/midas/Privado/repos/discover-flask/project/users/views.py",
+                    "excerpt" : "\n\n@users_blueprint.route(\n    '/register/', methods=['GET', 'POST'])   # pragma: no cover\ndef register():\n    form = RegisterForm() /* <=== project/users/forms.py */ \n    if form.validate_on_submit():\n        user = User(\n            name=form.username.data,\n            email=form.email.data,\n            password=form.password.data"
+                  },
+                  {
+                    "sample" : "form",
+                    "lineNumber" : 58,
+                    "columnNumber" : 5,
+                    "fileName" : "/home/midas/Privado/repos/discover-flask/project/users/views.py",
+                    "excerpt" : "\n\n@users_blueprint.route(\n    '/register/', methods=['GET', 'POST'])   # pragma: no cover\ndef register():\n    form = RegisterForm() /* <=== ANY */ \n    if form.validate_on_submit():\n        user = User(\n            name=form.username.data,\n            email=form.email.data,\n            password=form.password.data"
+                  },
+                  {
+                    "sample" : "form",
+                    "lineNumber" : 59,
+                    "columnNumber" : 8,
+                    "fileName" : "/home/midas/Privado/repos/discover-flask/project/users/views.py",
+                    "excerpt" : "\n@users_blueprint.route(\n    '/register/', methods=['GET', 'POST'])   # pragma: no cover\ndef register():\n    form = RegisterForm()\n    if form.validate_on_submit(): /* <=== ANY */ \n        user = User(\n            name=form.username.data,\n            email=form.email.data,\n            password=form.password.data\n        )"
+                  },
+                  {
+                    "sample" : "form.validate_on_submit()",
+                    "lineNumber" : 59,
+                    "columnNumber" : 8,
+                    "fileName" : "/home/midas/Privado/repos/discover-flask/project/users/views.py",
+                    "excerpt" : "\n@users_blueprint.route(\n    '/register/', methods=['GET', 'POST'])   # pragma: no cover\ndef register():\n    form = RegisterForm()\n    if form.validate_on_submit(): /* <=== project/users/forms.py */ \n        user = User(\n            name=form.username.data,\n            email=form.email.data,\n            password=form.password.data\n        )"
+                  }
+                ]
+              }
+            ]
+          }
+        ]
+      }
+    ],
+    "third_parties" : [
+    ]
+  }
+}
